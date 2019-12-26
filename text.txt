@@ -1,0 +1,11 @@
+Compañeros buenos días,
+Como resultado de la Ejecución del ETL con toda la data de FCV tenemos los siguientes resultados:
+Se inició el día 22/12/2019 el proceso se divide en 3 fases la primera consta de la extracción de la data desde la base de datos SQL Server, esta fase se cumplió con satisfacción.
+Después de 42 horas de ejecución, la fase dos que es la transformación finaliza sin éxito por el consumo de toda la memoria disponible en la computadora, esto se debe a que aunque la tabla de atenciones solo cuenta con 120000 registros existen, tablas con millones de registros como hceConsulta o facMovimiento, para hacer el proceso más eficiente es necesario cargar los data-frames en memoria y posterior a esto generar los JSON resultantes, como el server de FCV solo posee 10Gb en memoria el proceso finaliza sin generar los archivos resultado.
+Ante esta eventualidad se presentan 3 escenarios de solución:
+1.	Solicitar a FCV mas memoria para ejecutar nuevamente el proceso.
+2.	Migrar la fase 1 de extracción a una instancia EC2 con más prestaciones y ejecutar las fases 2 y 3 en esta computadora.
+3.	Correr las fases 2 y 3 en un entorno EMR, pero para este escenario es indispensable modificar el código fuente del ETL para que funcione de forma paralela y se ejecute con el framework de apache Spark en un cluster EMR.
+Quedo atento para realizar los cambios correspondientes ante este problema.
+
+Exitos!!
